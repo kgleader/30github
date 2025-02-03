@@ -37,7 +37,7 @@ class MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Меню'),
+        title: const Text('Menu'),
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
