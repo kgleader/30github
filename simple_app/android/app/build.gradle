@@ -1,7 +1,5 @@
-plugins {
-    id 'com.android.application'
-    id 'com.flutter.gradle.app_plugin_loader' // Плагинди декларативдүү кошуу
-}
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services' // эгер Google Services колдонуп жатсаңыз
 
 
 def localProperties = new Properties()
@@ -64,4 +62,7 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
+    classpath "com.android.tools.build:gradle:7.3.0"
+}
