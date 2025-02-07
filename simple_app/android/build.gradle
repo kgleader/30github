@@ -1,15 +1,14 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
     repositories {
-        google()
+        google()  // Google репозиторийин кошуңуз
         mavenCentral()
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.google.gms:google-services:4.3.10' // Бул жерге Google Services плагинин кошуңуз
     }
 }
+
 
 allprojects {
     repositories {

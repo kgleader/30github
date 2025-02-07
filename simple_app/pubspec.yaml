@@ -23,9 +23,15 @@ dev_dependencies:
 
  
 flutter:
+  assets:
+    - assets/coffee.jpg
+    - assets/tea.jpg
+    - assets/pie.jpg
+
 
    
   uses-material-design: true
+ 
 
   
  
