@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'checkout_screen.dart'; // Импорт экрана оплаты
+import 'checkout_screen.dart';
+import 'package:provider/provider.dart';
+import '../models/cart.dart';
+import '../models/menu_item.dart';
+import 'checkout_screen.dart';
 
 class CartScreen extends StatelessWidget {
   final List<Map<String, dynamic>> cartItems; // Список товаров в корзине
