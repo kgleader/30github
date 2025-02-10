@@ -19,9 +19,16 @@ class CheckoutScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Здесь будет логика оплаты
+                final double cartTotal = totalAmount; // Define cartTotal
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        CheckoutScreen(totalAmount: cartTotal),
+                  ),
+                );
               },
-              child: Text('Перейти к оплате'),
+              child: Text('Оформить заказ'),
             ),
           ],
         ),
