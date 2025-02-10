@@ -39,8 +39,16 @@ class CartScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CheckoutScreen(totalAmount: cart.totalAmount)),
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          CheckoutScreen(totalAmount: cart.totalPrice),
+                    ),
                   );
                 },
                 child: const Text('Перейти к оплате'),
               ),
+            )
+          : null,
+    );
+  }
+}

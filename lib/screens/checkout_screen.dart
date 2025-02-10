@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CheckoutScreen extends StatelessWidget {
   final double totalAmount;
 
-  CheckoutScreen({required this.totalAmount});
+  const CheckoutScreen({super.key, required this.totalAmount});
 
   @override
   Widget build(BuildContext context) {
