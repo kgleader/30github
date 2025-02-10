@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_paypal/flutter_paypal.dart';
+import 'package:flutter/foundation.dart';
 
 class CheckoutScreen extends StatelessWidget {
   final double totalAmount;
@@ -8,29 +10,51 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Оплата заказа')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Итого к оплате: \$${totalAmount.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                final double cartTotal = totalAmount; // Define cartTotal
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        CheckoutScreen(totalAmount: cartTotal),
-                  ),
-                );
-              },
-              child: Text('Оформить заказ'),
-            ),
-          ],
+      appBar: AppBar(title: const Text('Оплата')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => UsePaypal(
+                  sandboxMode: true, // true - тестовый режим, false - реальный
+                  clientId: "ТВОЙ_CLIENT_ID",
+                  secretKey: "ТВОЙ_SECRET_KEY",
+                  returnURL: "https://example.com/return",
+                  cancelURL: "https://example.com/cancel",
+                  transactions: [
+                    {
+                      "amount": {
+                        "total": totalAmount.toStringAsFixed(2),
+                        "currency": "USD",
+                        "details": {
+                          "subtotal": totalAmount.toStringAsFixed(2),
+                          "shipping": "0",
+                          "handling_fee": "0",
+                          "tax": "0"
+                        }
+                      },
+                      "description": "Оплата заказа в кафе"
+                    }
+                  ],
+                  note: "Спасибо за покупку!",
+                  onSuccess: (Map params) {
+                    print("Оплата успешна: $params");
+                    Navigator.pop(context);
+                  },
+                  onError: (error) {
+                    if (kDebugMode) {
+                      print("Ошибка оплаты: $error");
+                    }
+                  },
+                  onCancel: (params) {
+                    print("Оплата отменена: $params");
+                  },
+                ),
+              ),
+            );
+          },
+          child: const Text("Оплатить через PayPal"),
         ),
       ),
     );
