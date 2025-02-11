@@ -6,10 +6,10 @@ class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
   @override
-  _MenuScreenState createState() => _MenuScreenState();
+  MenuScreenState createState() => MenuScreenState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
+class MenuScreenState extends State<MenuScreen> {
   String selectedCategory = "Все";
 
   final List<String> categories = ["Все", "Чай", "Кофе", "Десерты"];
