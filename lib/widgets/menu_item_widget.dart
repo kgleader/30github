@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/menu_item.dart';
-import '../screens/product_details_screen.dart';
 
 class MenuItemWidget extends StatelessWidget {
   final MenuItem item;
@@ -16,11 +15,39 @@ class MenuItemWidget extends StatelessWidget {
         leading:
             Image.asset(item.image, width: 50, height: 50, fit: BoxFit.cover),
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ProductDetailsScreen(item: item),
-            ),
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item.name,
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    Text(item.description,
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.grey)),
+                    const SizedBox(height: 8),
+                    Text("\$${item.price}",
+                        style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green)),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Закрыть"),
+                    ),
+                  ],
+                ),
+              );
+            },
           );
         },
       ),

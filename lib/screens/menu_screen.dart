@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/cart.dart';
 import '../models/menu_item.dart';
 import '../widgets/menu_item_widget.dart';
 
@@ -6,10 +8,10 @@ class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
   @override
-  MenuScreenState createState() => MenuScreenState();
+  _MenuScreenState createState() => _MenuScreenState();
 }
 
-class MenuScreenState extends State<MenuScreen> {
+class _MenuScreenState extends State<MenuScreen> {
   String selectedCategory = "Все";
 
   final List<String> categories = ["Все", "Чай", "Кофе", "Десерты"];
@@ -36,6 +38,8 @@ class MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var cart = Provider.of<Cart>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Меню'),
