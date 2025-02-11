@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart.dart';
-import '../models/menu_item.dart';
-import 'checkout_screen.dart'; // Добавляем импорт экрана оплаты
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -13,42 +11,39 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Корзина'),
+        title: Text('Корзина'),
       ),
-      body: cart.items.isEmpty
-          ? const Center(child: Text('Ваша корзина пуста'))
-          : ListView.builder(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
               itemCount: cart.items.length,
               itemBuilder: (context, index) {
-                MenuItem item = cart.items[index];
+                var item = cart.items[index];
                 return ListTile(
-                  leading: Image.asset(item.image, width: 50, height: 50),
                   title: Text(item.name),
-                  subtitle: Text('${item.price} \$'),
+                  subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
                   trailing: IconButton(
-                    icon: const Icon(Icons.remove_circle),
-                    onPressed: () => cart.removeItem(item),
+                    icon: Icon(Icons.remove_circle),
+                    onPressed: () {
+                      cart.removeItem(item);
+                    },
                   ),
                 );
               },
             ),
-      bottomNavigationBar: cart.items.isNotEmpty
-          ? Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          CheckoutScreen(totalAmount: cart.totalPrice),
-                    ),
-                  );
-                },
-                child: const Text('Перейти к оплате'),
-              ),
-            )
-          : null,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                // Добавьте логику оплаты здесь
+              },
+              child: Text('Оплатить \$${cart.totalPrice.toStringAsFixed(2)}'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

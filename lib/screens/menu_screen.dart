@@ -1,68 +1,83 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../models/cart.dart';
-import '../screens/cart_screen.dart';
 import '../models/menu_item.dart';
+import '../widgets/menu_item_widget.dart';
 
-class MenuScreen extends StatelessWidget {
-  final List<MenuItem> menuItems = [
-    MenuItem(name: 'Чай', price: 2.5, image: 'assets/tea.jpg'),
-    MenuItem(name: 'Кофе', price: 3.0, image: 'assets/coffee.jpg'),
-    MenuItem(name: 'Пирог', price: 4.0, image: 'assets/pie.jpg'),
+class MenuScreen extends StatefulWidget {
+  const MenuScreen({super.key});
+
+  @override
+  _MenuScreenState createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
+  String selectedCategory = "Все";
+
+  final List<String> categories = ["Все", "Чай", "Кофе", "Десерты"];
+  final List<MenuItem> items = [
+    MenuItem(
+        name: "Чай",
+        price: 1.99,
+        image: "assets/tea.jpg",
+        category: "Чай",
+        description: "Вкусный чай"),
+    MenuItem(
+        name: "Кофе",
+        price: 2.99,
+        image: "assets/coffee.jpg",
+        category: "Кофе",
+        description: "Ароматный кофе"),
+    MenuItem(
+        name: "Пирог",
+        price: 3.99,
+        image: "assets/pie.jpg",
+        category: "Десерты",
+        description: "Сладкий пирог"),
   ];
-
-  MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var cart = Provider.of<Cart>(context);
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Меню'),
+        title: Text('Меню'),
         actions: [
-          Stack(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.shopping_cart),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CartScreen()),
-                  );
-                },
-              ),
-              Positioned(
-                right: 8,
-                top: 8,
-                child: CircleAvatar(
-                  radius: 10,
-                  backgroundColor: Colors.red,
-                  child: Text(
-                    '${cart.itemCount}',
-                    style: const TextStyle(fontSize: 12, color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart');
+            },
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: menuItems.length,
-        itemBuilder: (context, index) {
-          MenuItem item = menuItems[index];
-
-          return ListTile(
-            leading: Image.asset(item.image, width: 50, height: 50),
-            title: Text(item.name),
-            subtitle: Text('${item.price} \$'),
-            trailing: ElevatedButton(
-              onPressed: () => cart.addItem(item),
-              child: const Text('Добавить'),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton<String>(
+              value: selectedCategory,
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedCategory = newValue!;
+                });
+              },
+              items: categories.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
-          );
-        },
+          ),
+          Expanded(
+            child: ListView(
+              children: items
+                  .where((item) =>
+                      selectedCategory == "Все" ||
+                      item.category == selectedCategory)
+                  .map((item) => MenuItemWidget(item: item))
+                  .toList(),
+            ),
+          ),
+        ],
       ),
     );
   }

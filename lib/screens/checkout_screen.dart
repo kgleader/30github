@@ -39,7 +39,9 @@ class CheckoutScreen extends StatelessWidget {
                   ],
                   note: "Спасибо за покупку!",
                   onSuccess: (Map params) {
-                    print("Оплата успешна: $params");
+                    if (kDebugMode) {
+                      print("Оплата успешна: $params");
+                    }
                     Navigator.pop(context);
                   },
                   onError: (error) {
@@ -48,7 +50,9 @@ class CheckoutScreen extends StatelessWidget {
                     }
                   },
                   onCancel: (params) {
-                    print("Оплата отменена: $params");
+                    if (kDebugMode) {
+                      print("Оплата отменена: $params");
+                    }
                   },
                 ),
               ),

@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'menu_item.dart';
 
 class Cart with ChangeNotifier {
-  int get itemCount {
-    // return the number of items in the cart
-    return _items.length;
-  }
-
   final List<MenuItem> _items = [];
 
   List<MenuItem> get items => _items;
@@ -21,7 +16,16 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
+  void clearCart() {
+    _items.clear();
+    notifyListeners();
+  }
+
   double get totalPrice {
     return _items.fold(0, (sum, item) => sum + item.price);
+  }
+
+  int get itemCount {
+    return _items.length;
   }
 }
