@@ -8,10 +8,10 @@ class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
   @override
-  _MenuScreenState createState() => _MenuScreenState();
+  MenuScreenState createState() => MenuScreenState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
+class MenuScreenState extends State<MenuScreen> {
   String selectedCategory = "Все";
 
   final List<String> categories = ["Все", "Чай", "Кофе", "Десерты"];
@@ -21,23 +21,25 @@ class _MenuScreenState extends State<MenuScreen> {
         price: 1.99,
         image: "assets/tea.jpg",
         category: "Чай",
-        description: "Вкусный чай"),
+        description: "Вкусный чай. Состав: чайные листья, лимон."),
     MenuItem(
         name: "Кофе",
         price: 2.99,
         image: "assets/coffee.jpg",
         category: "Кофе",
-        description: "Ароматный кофе"),
+        description: "Ароматный кофе. Состав: кофейные зерна, вода."),
     MenuItem(
         name: "Пирог",
         price: 3.99,
         image: "assets/pie.jpg",
         category: "Десерты",
-        description: "Сладкий пирог"),
+        description: "Сладкий пирог. Состав: мука, сахар, яблоки."),
   ];
 
   @override
   Widget build(BuildContext context) {
+    var cart = Provider.of<Cart>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Меню'),
