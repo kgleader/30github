@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MenuScreen(),
+      home: const MenuScreen(),
       routes: {
-        '/cart': (context) => CartScreen(),
+        '/cart': (context) => const CartScreen(),
       },
     );
   }
