@@ -11,7 +11,7 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Корзина'),
+        title: const Text('Корзина'),
       ),
       body: Column(
         children: [
@@ -24,7 +24,7 @@ class CartScreen extends StatelessWidget {
                   title: Text(item.name),
                   subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
                   trailing: IconButton(
-                    icon: Icon(Icons.remove_circle),
+                    icon: const Icon(Icons.remove_circle),
                     onPressed: () {
                       cart.removeItem(item);
                     },
