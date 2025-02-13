@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'models/cart.dart';
 import 'screens/menu_screen.dart';
 import 'screens/cart_screen.dart';
+import 'screens/payment_success_screen.dart';
 
 void main() {
   runApp(
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       home: const MenuScreen(),
       routes: {
         '/cart': (context) => const CartScreen(),
+        '/payment_success': (context) => const PaymentSuccessScreen(),
       },
     );
   }
