@@ -15,16 +15,17 @@ class MenuItemScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(item.name,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
             Text('\$${item.price.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 20)),
-            SizedBox(height: 20),
+                style: const TextStyle(fontSize: 20)),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context); // Возвращаемся назад в меню
               },
-              child: Text('Назад'),
+              child: const Text('Назад'),
             ),
           ],
         ),
