@@ -35,11 +35,23 @@ class CartScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Добавьте логику оплаты здесь
-              },
-              child: Text('Оплатить \$${cart.totalPrice.toStringAsFixed(2)}'),
+            child: Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/payment_success');
+                  },
+                  child: const Text('Заказ на дом'),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    // Добавьте логику оплаты здесь
+                  },
+                  child:
+                      Text('Оплатить \$${cart.totalPrice.toStringAsFixed(2)}'),
+                ),
+              ],
             ),
           ),
         ],
