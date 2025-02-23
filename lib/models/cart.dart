@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
 import 'menu_item.dart';
 
-class Cart with ChangeNotifier {
-  final List<MenuItem> _items = [];
+class Cart extends ChangeNotifier {
+  final List<MenuItem> items = [];
 
-  List<MenuItem> get items => _items;
+  List<MenuItem> get cartItems => items;
 
   void addItem(MenuItem item) {
-    _items.add(item);
+    items.add(item);
     notifyListeners();
   }
 
-  void removeItem(MenuItem item) {
-    _items.remove(item);
+  void removeFromCart(MenuItem item) {
+    items.remove(item);
     notifyListeners();
   }
 
-  void clearCart() {
-    _items.clear();
-    notifyListeners();
-  }
-
-  double get totalPrice {
-    return _items.fold(0, (sum, item) => sum + item.price);
-  }
-
-  int get itemCount {
-    return _items.length;
+  void addToCart(MenuItem item) {
+    items.add(item);
   }
 }

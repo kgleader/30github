@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/cart.dart';
-import 'screens/menu_screen.dart';
-import 'screens/cart_screen.dart';
-import 'screens/payment_success_screen.dart';
+import 'models/menu_item.dart';
+import 'screens/menu_item_screen.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => Cart(),
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }
@@ -20,11 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const MenuScreen(),
-      routes: {
-        '/cart': (context) => const CartScreen(),
-        '/payment_success': (context) => const PaymentSuccessScreen(),
-      },
+      home: MenuScreen(),
     );
   }
 }
