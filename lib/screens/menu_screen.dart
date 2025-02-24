@@ -10,7 +10,7 @@ class MenuScreen extends StatefulWidget {
 }
 
 class MenuScreenState extends State<MenuScreen> {
-  String selectedCategory = "Все";
+  String selectedCategory = "ВСЕ";
 
   final List<String> categories = ["ВСЕ", "ЧАЙ", "КОФЕ", "Десерты"];
   final List<MenuItem> items = [
