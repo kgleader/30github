@@ -15,7 +15,7 @@ class MenuScreenState extends State<MenuScreen> {
   final List<String> categories = ["ВСЕ", "ЧАЙ", "КОФЕ", "Десерты"];
   final List<MenuItem> items = [
     MenuItem(
-        name: "Чай",
+        name: "Ч",
         price: 1.99,
         image: "assets/tea.jpg",
         category: "Чай",
