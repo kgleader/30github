@@ -19,7 +19,7 @@ class MenuScreenState extends State<MenuScreen> {
         price: 1.99,
         image: "assets/tea.jpg",
         category: "Чай",
-        description: "Вкусный чай. Состав: чайные листья, лимон."),
+        description: "кусный чай. Состав: чайные листья, лимон."),
     MenuItem(
         name: "Кофе",
         price: 2.99,
