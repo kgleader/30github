@@ -1,15 +1,13 @@
-class MenuItem {
-  final String name;
+class CartItem {
+  final String id;
+  final String title;
+  final int quantity;
   final double price;
-  final String image;
-  final String category;
-  final String description;
 
-  MenuItem({
-    required this.name,
+  CartItem({
+    required this.id,
+    required this.title,
+    required this.quantity,
     required this.price,
-    required this.image,
-    required this.category,
-    required this.description,
   });
 }
