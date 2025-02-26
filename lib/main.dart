@@ -1,24 +1,27 @@
+// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'models/cart.dart';
-import 'screens/menu_item_screen.dart';
+import './providers/cart_provider.dart';
+import './screens/product_overview_screen.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => Cart(),
+      create: (context) => CartProvider(),
       child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MenuScreen(),
+      title: 'Your App Title',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ProductOverviewScreen(),
     );
   }
 }
