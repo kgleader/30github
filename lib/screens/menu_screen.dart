@@ -24,7 +24,7 @@ class MenuScreenState extends State<MenuScreen> {
         name: "Кофе",
         price: 2.99,
         image: "assets/coffee.jpg",
-        category: "Кофе",
+        category: "COFFEE",
         description: "Ароматный кофе. Состав: кофейные зерна, вода."),
     MenuItem(
         name: "Пирог",
