@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/menu_item.dart';
+import '../models/cart_item.dart';
 import '../models/cart.dart';
 
 class MenuItemWidget extends StatelessWidget {
-  final MenuItem item;
+  final CartItem item;
 
   const MenuItemWidget({super.key, required this.item});
 

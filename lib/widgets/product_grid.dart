@@ -1,27 +1,25 @@
-  // lib/widgets/product_grid.dart
-  import 'package:flutter/material.dart';
-  import '../models/product.dart';
-  import './product_item.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/products_provider.dart';
+import '../widgets/product_item.dart';
 
-  class ProductGrid extends StatelessWidget {
-    final List<Product> loadedProducts = [
-      Product(
-        id: 'p1',
-        title: 'Product 1',
-        description: 'Description for Product 1',
-        price: 29.99,
-        imageUrl: 'https://via.placeholder.com/150',
+class ProductGrid extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final productsData = Provider.of<ProductsProvider>(context);
+    final products = productsData.items; // Get the list of products
+
+    return GridView.builder(
+      padding: const EdgeInsets.all(10.0),
+      itemCount: products.length, // Total number of products
+      itemBuilder: (ctx, i) =>
+          ProductItem(product: products[i]), // Display each product
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // Two products per row
+        childAspectRatio: 3 / 2, // Aspect ratio of each grid item
+        crossAxisSpacing: 10, // Space between columns
+        mainAxisSpacing: 10, // Space between rows
       ),
-      // Add more products as needed
-    ];
-
-    @override
-    Widget build(BuildContext context) {
-      return GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        itemCount: loadedProducts.length,
-        itemBuilder: (ctx, i) => ProductItem(
-          id: loadedProducts[i].id,
-          title
-::contentReference[oaicite:0]{index=0}
- 
+    );
+  }
+}

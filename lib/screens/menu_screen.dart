@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/menu_item.dart';
+import '../models/cart_item.dart';
 import '../widgets/menu_item_widget.dart';
 
 class MenuScreen extends StatefulWidget {

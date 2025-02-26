@@ -1,8 +1,8 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './providers/cart_provider.dart';
 import './screens/product_overview_screen.dart';
+import 'provider/cart_provider.dart';
 
 void main() {
   runApp(
