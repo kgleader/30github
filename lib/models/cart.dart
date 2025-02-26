@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'menu_item.dart';
+import 'cart_item.dart';
 
 class Cart extends ChangeNotifier {
-  final List<MenuItem> items = [];
+  final List<CartItem> items = [];
 
-  List<MenuItem> get cartItems => items;
+  List<CartItem> get cartItems => items;
 
-  void addItem(MenuItem item) {
+  void addItem(CartItem item) {
     items.add(item);
     notifyListeners();
   }
 
-  void removeFromCart(MenuItem item) {
+  void removeFromCart(CartItem item) {
     items.remove(item);
     notifyListeners();
   }
 
-  void addToCart(MenuItem item) {
+  void addToCart(CartItem item) {
     items.add(item);
   }
 }
