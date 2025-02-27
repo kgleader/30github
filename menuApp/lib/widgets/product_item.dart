@@ -4,7 +4,7 @@ import 'package:simple_app/models/cart_item.dart';
 class ProductItem extends StatelessWidget {
   final CartItem product;
 
-  ProductItem({required this.product});
+  const ProductItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
