@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/cart.dart';
+import '../models/cart_item.dart';
 
 class CartScreen extends StatelessWidget {
   final Cart cart;
@@ -9,7 +10,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Сиздин корзина")),
+      appBar: AppBar(title: Text("Your Cart")),
       body: ListView.builder(
         itemCount: cart.cartItems.length,
         itemBuilder: (context, index) {

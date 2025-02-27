@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/cart_item.dart';
 import '../widgets/menu_item_widget.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -13,20 +12,20 @@ class MenuScreenState extends State<MenuScreen> {
   String selectedCategory = "ВСЕ";
 
   final List<String> categories = ["ВСЕ", "ЧАЙ", "КОФЕ", "Десерты"];
-  final List<MenuItem> items = [
-    MenuItem(
+  final List<CartItem> items = [
+    CartItem(
         name: "Ч",
         price: 1.99,
         image: "assets/tea.jpg",
         category: "Чай",
         description: "кусный чай. Состав: чайные листья, лимон."),
-    MenuItem(
+    CartItem(
         name: "Кофе",
         price: 2.99,
         image: "assets/coffee.jpg",
         category: "COFFEE",
         description: "Ароматный кофе. Состав: кофейные зерна, вода."),
-    MenuItem(
+    CartItem(
         name: "Пирог",
         price: 3.99,
         image: "assets/pie.jpg",

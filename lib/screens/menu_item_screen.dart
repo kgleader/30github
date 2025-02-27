@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart.dart';
 import '../models/cart_item.dart' show CartItem;
-import '../provider/cart_provider.dart';
+import '../providers/cart_provider.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -18,7 +18,7 @@ class MenuScreen extends StatelessWidget {
         category: "Фастфуд",
         description: "Вкусный бургер с говядиной",
         title: '',
-        quantity: null,
+        quantity: 0,
       ),
       CartItem(
         name: "Пицца",
@@ -28,7 +28,7 @@ class MenuScreen extends StatelessWidget {
         category: "Итальянская кухня",
         description: "Пицца с сыром и пепперони",
         title: '',
-        quantity: null,
+        quantity: 0,
       ),
       CartItem(
         name: "Суши",
@@ -38,7 +38,7 @@ class MenuScreen extends StatelessWidget {
         description: "Суши с лососем и авокадо",
         id: '',
         title: '',
-        quantity: null,
+        quantity: 0,
       ),
       CartItem(
         name: "Шашлык",
@@ -48,7 +48,7 @@ class MenuScreen extends StatelessWidget {
         description: "Шашлык из свинины",
         id: '',
         title: '',
-        quantity: null,
+        quantity: 0,
       ),
       CartItem(
         name: "Салат",
@@ -58,12 +58,12 @@ class MenuScreen extends StatelessWidget {
         description: "Салат с овощами и курицей",
         id: '',
         title: '',
-        quantity: null,
+        quantity: 0,
       ),
     ];
 
-    var cart = Provider.of<CartProvider>(context, listen: false)
-        .addItem(product.id, product.title, product.price, product.imageUrl);
+    var cart = Provider.of<CartProvider>(context, listen: false).addItem(
+        menuItems.id, menuItems.title, menuItems.price, menuItems.imageUrl);
     return Scaffold(
       appBar: AppBar(title: Text("Меню")),
       body: ListView.builder(

@@ -6,7 +6,8 @@ class CartItem {
   final int quantity;
   final double price;
   final String description;
-  final String image; // <- Required but missing!
+  final String image;
+  // <- Required but missing!
 
   CartItem({
     required this.id,
