@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
-import '../providers/cart_provider.dart';
 import 'package:provider/provider.dart';
+import '../providers/cart_provider.dart';
 
 class MenuScreen extends StatelessWidget {
-  final List<Product> products = [
-    Product(id: '1', name: 'Бургер', price: 5.99, image: 'assets/burger.png'),
-    Product(id: '2', name: 'Пицца', price: 8.99, image: 'assets/pizza.png'),
-    Product(id: '3', name: 'Салат', price: 4.99, image: 'assets/salad.png'),
-    Product(id: '4', name: 'Кола', price: 2.99, image: 'assets/cola.png'),
+  final List<Map<String, dynamic>> products = [
+    {
+      'id': '1',
+      'name': 'Пицца Пепперони',
+      'price': 12.99,
+      'image': 'assets/pizza.png',
+    },
+    {
+      'id': '2',
+      'name': 'Бургер Классик',
+      'price': 8.99,
+      'image': 'assets/burger.png',
+    },
+    // Добавьте другие продукты
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Меню',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        title: Text('Меню'),
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.pushNamed(context, '/cart');
-            },
-          ),
+            onPressed: () => Navigator.pushNamed(context, '/cart'),
+          )
         ],
       ),
       body: GridView.builder(
@@ -35,38 +40,60 @@ class MenuScreen extends StatelessWidget {
           mainAxisSpacing: 10,
         ),
         itemCount: products.length,
-        itemBuilder: (context, index) {
-          return _buildProductCard(context, products[index]);
-        },
+        itemBuilder: (ctx, i) => ProductItem(
+          id: products[i]['id'],
+          name: products[i]['name'],
+          price: products[i]['price'],
+          image: products[i]['image'],
+        ),
       ),
     );
   }
+}
 
-  Widget _buildProductCard(BuildContext context, Product product) {
+class ProductItem extends StatelessWidget {
+  final String id;
+  final String name;
+  final double price;
+  final String image;
+
+  ProductItem(
+      {required this.id,
+      required this.name,
+      required this.price,
+      required this.image});
+
+  @override
+  Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context, listen: false);
-
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       elevation: 5,
-      child: Column(
-        children: [
-          Expanded(
-            child: Image.asset(product.image, fit: BoxFit.cover),
-          ),
-          Text(product.name,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          Text('\$${product.price.toStringAsFixed(2)}',
-              style: TextStyle(color: Colors.green, fontSize: 16)),
-          SizedBox(height: 5),
-          ElevatedButton(
-            onPressed: () {
-              cart.addToCart(product);
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('${product.name} добавлен в корзину!')));
-            },
-            child: Text('Добавить'),
-          ),
-        ],
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(15),
+        onTap: () => cart.addItem(id, name, price),
+        child: Column(
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+                child: Image.asset(image, fit: BoxFit.cover),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+                  SizedBox(height: 4),
+                  Text('\$${price.toStringAsFixed(2)}',
+                      style: TextStyle(color: Colors.green)),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

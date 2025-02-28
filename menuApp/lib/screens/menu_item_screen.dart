@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart_item.dart' show CartItem;
 import '../providers/cart_provider.dart';
+import 'package:simple_app/models/cart_item.dart' as model;
+import 'package:simple_app/providers/cart_provider.dart' as provider;
+
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -61,7 +64,8 @@ class MenuScreen extends StatelessWidget {
       ),
     ];
 
-    var cart = Provider.of<CartProvider>(context, listen: false).addItem(
+    var cart = Provider.of<CartProvider>(context, listen: false).cart.addToCart(product);
+(
         menuItems.id, menuItems.title, menuItems.price, menuItems.imageUrl);
     return Scaffold(
       appBar: AppBar(title: Text("Меню")),
