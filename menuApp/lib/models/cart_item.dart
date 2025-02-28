@@ -7,6 +7,7 @@ class CartItem {
   final double price;
   final String description;
   final String image;
+
   // <- Required but missing!
 
   CartItem({

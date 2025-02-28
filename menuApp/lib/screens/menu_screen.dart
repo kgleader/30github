@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/cart_provider.dart';
+import 'package:simple_app/providers/product.dart';
+import '../providers/cart_provider.dart'; // Путь к вашему CartProvider
 
 class MenuScreen extends StatelessWidget {
   final List<Map<String, dynamic>> products = [
     {
-      'id': '1',
-      'name': 'Пицца Пепперони',
+      'id': 'P1',
+      'name': 'Coffee',
       'price': 12.99,
-      'image': 'assets/pizza.png',
+      'image': 'assets/images/coffee.jpg', // Путь к изображению
     },
     {
-      'id': '2',
-      'name': 'Бургер Классик',
-      'price': 8.99,
-      'image': 'assets/burger.png',
+      'id': 'P2',
+      'name': 'Tea',
+      'price': 10.99,
+      'image': 'assets/images/tea.jpg', // Путь к изображению
+    },
+    {
+      'id': 'P3',
+      'name': 'Pie',
+      'price': 5.99,
+      'image': 'assets/images/pie.jpg', // Путь к изображению
+    },
+    {
+      'id': 'P4',
+      'name': 'Pizza Slice',
+      'price': 2.99,
+      'image': 'assets/images/pizza.jpg', // Путь к изображению
     },
     // Добавьте другие продукты
   ];
+
+  MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +72,13 @@ class ProductItem extends StatelessWidget {
   final double price;
   final String image;
 
-  ProductItem(
-      {required this.id,
-      required this.name,
-      required this.price,
-      required this.image});
+  const ProductItem({
+    super.key,
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +88,8 @@ class ProductItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: InkWell(
         borderRadius: BorderRadius.circular(15),
-        onTap: () => cart.addItem(id, name, price),
+        onTap: () => cart.addToCart(
+            id as Product, name, price), // Передаем id, name и price
         child: Column(
           children: [
             Expanded(
@@ -91,7 +109,7 @@ class ProductItem extends StatelessWidget {
                       style: TextStyle(color: Colors.green)),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

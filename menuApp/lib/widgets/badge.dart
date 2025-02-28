@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 class Badge extends StatelessWidget {
   final Widget child;
   final String value;
-  final Color color;
 
   const Badge({
+    super.key,
     required this.child,
     required this.value,
-    this.color = Colors.red,
   });
 
   @override
@@ -24,7 +23,7 @@ class Badge extends StatelessWidget {
             padding: EdgeInsets.all(2),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: color,
+              color: Colors.red,
             ),
             constraints: BoxConstraints(
               minWidth: 16,
@@ -32,11 +31,7 @@ class Badge extends StatelessWidget {
             ),
             child: Text(
               value,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 10,
-                color: Colors.white,
-              ),
+              style: TextStyle(fontSize: 10, color: Colors.white),
             ),
           ),
         ),

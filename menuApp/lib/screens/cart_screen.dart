@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/cart_provider.dart'; // Импортируем CartProvider
+import '../providers/cart_provider.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({super.key}); // Убираем параметр 'cart'
+
   @override
   Widget build(BuildContext context) {
     // Получаем CartProvider

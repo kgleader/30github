@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
-import '../widgets/badge.dart';
-import '../widgets/badge.dart';
+import 'package:badges/badges.dart' as badges;
 import '../widgets/product_grid.dart';
 import './cart_screen.dart';
-import 'package:badges/badges.dart' as badges;  
 
 class ProductOverviewScreen extends StatelessWidget {
   const ProductOverviewScreen({super.key});
@@ -17,16 +15,30 @@ class ProductOverviewScreen extends StatelessWidget {
         title: Text('Products'),
         actions: [
           Consumer<CartProvider>(
-            builder: (_, cart, ch) => badges.Badge(...),
-            child: IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => CartScreen(cart: ,),
-                  ),
-                );
-              },
+            builder: (_, cart, ch) => badges.Badge(
+              badgeContent: Text(
+                cart.productCount.toString(),
+                style: TextStyle(color: Colors.white),
+              ),
+              badgeStyle: badges.BadgeStyle(
+                shape: badges.BadgeShape.circle, // Пример оформления бейджа
+                padding: EdgeInsets.all(6), // Устанавливаем отступ
+                badgeColor: Theme.of(context)
+                    .colorScheme
+                    .secondary, // Используем доступный параметр
+                elevation: 0, // Убираем тень
+              ),
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          CartScreen(), // Убираем параметр 'cart'
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],

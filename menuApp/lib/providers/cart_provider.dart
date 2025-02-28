@@ -6,7 +6,11 @@ class CartProvider with ChangeNotifier {
 
   Map<String, Product> get products => _products;
 
-  void addToCart(Product product) {
+  get itemCount => null;
+
+  get productCount => null;
+
+  void addToCart(Product product, String name, double price) {
     if (!_products.containsKey(product.id)) {
       _products[product.id] = product;
     }
