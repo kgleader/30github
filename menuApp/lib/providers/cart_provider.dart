@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:simple_app/providers/product.dart';
+import 'product.dart';
 
 class CartProvider with ChangeNotifier {
-  final Map<String, Product> _products = {}; // Хранение продуктов
+  final Map<String, Product> _products = {};
 
-  // Геттер для получения продуктов
   Map<String, Product> get products => _products;
 
   void addToCart(Product product) {
@@ -14,7 +13,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeFromCart(String productId) {
+  void removeItem(String productId) {
     _products.remove(productId);
     notifyListeners();
   }
