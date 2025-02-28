@@ -8,6 +8,8 @@ import '../widgets/product_grid.dart';
 import './cart_screen.dart';
 
 class ProductOverviewScreen extends StatelessWidget {
+  const ProductOverviewScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

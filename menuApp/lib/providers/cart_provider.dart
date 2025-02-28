@@ -1,50 +1,45 @@
-// lib/providers/cart_provider.dart
 import 'package:flutter/material.dart';
-import '../models/cart_item.dart';
+import '../models/product.dart';
 
 class CartProvider with ChangeNotifier {
-  final Map<String, CartItem> _items = {};
+  final Map<String, int> _items = {};
+  final Map<String, Product> _products = {};
 
-  Map<String, CartItem> get items => {..._items};
+  Map<String, int> get items => _items;
+  Map<String, Product> get products => _products;
 
-  int get itemCount => _items.length;
-
-  double get totalAmount {
-    return _items.values
-        .fold(0.0, (sum, item) => sum + (item.price * item.quantity));
-  }
-
-  void addItem(String productId, String title, double price, String image) {
-    // Add image as a parameter
-    if (_items.containsKey(productId)) {
-      _items.update(
-        productId,
-        (existingItem) => CartItem(
-          id: existingItem.id,
-          title: existingItem.title,
-          quantity: existingItem.quantity + 1,
-          price: existingItem.price,
-          image: existingItem.image,
-          category: '',
-          name: '',
-          description: '', // Ensure existing image is used
-        ),
-      );
+  void addToCart(Product product) {
+    if (_items.containsKey(product.id)) {
+      _items[product.id] = _items[product.id]! + 1;
     } else {
-      _items.putIfAbsent(
-        productId,
-        () => CartItem(
-          id: DateTime.now().toString(),
-          title: title,
-          quantity: 1,
-          price: price,
-          image: image,
-          category: '',
-          name: '',
-          description: '', // Now passing the required image
-        ),
-      );
+      _items[product.id] = 1;
+      _products[product.id] = product;
     }
     notifyListeners();
+  }
+
+  void removeFromCart(String productId) {
+    if (_items.containsKey(productId)) {
+      _items[productId] = _items[productId]! - 1;
+      if (_items[productId] == 0) {
+        _items.remove(productId);
+        _products.remove(productId);
+      }
+      notifyListeners();
+    }
+  }
+
+  void clearCart() {
+    _items.clear();
+    _products.clear();
+    notifyListeners();
+  }
+
+  double getTotalPrice() {
+    double total = 0.0;
+    _items.forEach((id, quantity) {
+      total += _products[id]!.price * quantity;
+    });
+    return total;
   }
 }

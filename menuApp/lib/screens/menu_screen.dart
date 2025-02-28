@@ -1,80 +1,70 @@
 import 'package:flutter/material.dart';
-import '../widgets/menu_item_widget.dart';
+import '../models/product.dart';
+import '../providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
-
-  @override
-  MenuScreenState createState() => MenuScreenState();
-}
-
-class MenuScreenState extends State<MenuScreen> {
-  String selectedCategory = "ВСЕ";
-
-  final List<String> categories = ["ВСЕ", "ЧАЙ", "КОФЕ", "Десерты"];
-  final List<CartItem> items = [
-    CartItem(
-        name: "Ч",
-        price: 1.99,
-        image: "assets/tea.jpg",
-        category: "Чай",
-        description: "кусный чай. Состав: чайные листья, лимон."),
-    CartItem(
-        name: "Кофе",
-        price: 2.99,
-        image: "assets/coffee.jpg",
-        category: "COFFEE",
-        description: "Ароматный кофе. Состав: кофейные зерна, вода."),
-    CartItem(
-        name: "Пирог",
-        price: 3.99,
-        image: "assets/pie.jpg",
-        category: "Десерты",
-        description: "Сладкий пирог. Состав: мука, сахар, яблоки."),
+class MenuScreen extends StatelessWidget {
+  final List<Product> products = [
+    Product(id: '1', name: 'Бургер', price: 5.99, image: 'assets/burger.png'),
+    Product(id: '2', name: 'Пицца', price: 8.99, image: 'assets/pizza.png'),
+    Product(id: '3', name: 'Салат', price: 4.99, image: 'assets/salad.png'),
+    Product(id: '4', name: 'Кола', price: 2.99, image: 'assets/cola.png'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Menu'),
+        title: Text('Меню',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
+            icon: Icon(Icons.shopping_cart),
             onPressed: () {
               Navigator.pushNamed(context, '/cart');
             },
           ),
         ],
       ),
-      body: Column(
+      body: GridView.builder(
+        padding: EdgeInsets.all(10),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.8,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return _buildProductCard(context, products[index]);
+        },
+      ),
+    );
+  }
+
+  Widget _buildProductCard(BuildContext context, Product product) {
+    final cart = Provider.of<CartProvider>(context, listen: false);
+
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      elevation: 5,
+      child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: DropdownButton<String>(
-              value: selectedCategory,
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedCategory = newValue!;
-                });
-              },
-              items: categories.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-          ),
           Expanded(
-            child: ListView(
-              children: items
-                  .where((item) =>
-                      selectedCategory == "Все" ||
-                      item.category == selectedCategory)
-                  .map((item) => MenuItemWidget(item: item))
-                  .toList(),
-            ),
+            child: Image.asset(product.image, fit: BoxFit.cover),
+          ),
+          Text(product.name,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('\$${product.price.toStringAsFixed(2)}',
+              style: TextStyle(color: Colors.green, fontSize: 16)),
+          SizedBox(height: 5),
+          ElevatedButton(
+            onPressed: () {
+              cart.addToCart(product);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('${product.name} добавлен в корзину!')));
+            },
+            child: Text('Добавить'),
           ),
         ],
       ),
