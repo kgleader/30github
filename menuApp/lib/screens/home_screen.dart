@@ -3,12 +3,11 @@ import 'package:provider/provider.dart';
 import '../providers/products_provider.dart';
 import '../widgets/product_item.dart';
 
-class MenuScreen extends StatelessWidget {
-  const MenuScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Получаем продукты из Provider
     final productsData = Provider.of<ProductsProvider>(context);
     final products = productsData.items;
 
@@ -18,17 +17,18 @@ class MenuScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () => Navigator.pushNamed(context, '/cart'),
+            onPressed: () =>
+                Navigator.pushNamed(context, '/cart'), // ✅ Переход в корзину
           ),
         ],
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // 2 колонки
-          childAspectRatio: 0.8, // Пропорции карточек
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          crossAxisCount: 3, // ✅ Было 2, теперь 3 товара в ряд
+          childAspectRatio: 0.9, // ✅ Было 0.7 → теперь карточки компактнее
+          crossAxisSpacing: 5, // ✅ Было 10, теперь 5
+          mainAxisSpacing: 5, // ✅ Было 10, теперь 5
         ),
         itemCount: products.length,
         itemBuilder: (ctx, i) => ProductItem(product: products[i]),
