@@ -32,3 +32,11 @@ Runner/GeneratedPluginRegistrant.*
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
+# Ignore Gradle and metadata files
+.gradle/
+.idea/
+.metadata
+android/.gradle/
+android/.idea/
+android/.cxx/
+android/app/.cxx/
