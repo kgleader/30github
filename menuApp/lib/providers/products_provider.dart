@@ -4,20 +4,32 @@ import '../models/product.dart';
 class ProductsProvider with ChangeNotifier {
   final List<Product> _items = [
     Product(
-        id: 'P1',
-        name: 'Coffee',
-        price: 12.99,
-        imageUrl: 'assets/images/coffee.jpg'),
+      id: 'p1',
+      name: 'Pizza',
+      price: 12.99,
+      imageUrl: 'https://via.placeholder.com/100',
+    ),
     Product(
-        id: 'P2', name: 'Tea', price: 10.99, imageUrl: 'assets/images/tea.jpg'),
+      id: 'p2',
+      name: 'Burger',
+      price: 8.99,
+      imageUrl: 'https://via.placeholder.com/100',
+    ),
     Product(
-        id: 'P3', name: 'Pie', price: 5.99, imageUrl: 'assets/images/pie.jpg'),
+      id: 'p3',
+      name: 'Coffee',
+      price: 4.99,
+      imageUrl: 'https://via.placeholder.com/100',
+    ),
     Product(
-        id: 'P4',
-        name: 'Pizza',
-        price: 2.99,
-        imageUrl: 'assets/images/pizza.jpg'),
+      id: 'p4',
+      name: 'Soda',
+      price: 2.99,
+      imageUrl: 'https://via.placeholder.com/100',
+    ),
   ];
 
-  List<Product> get items => [..._items]; // ✅ Гарантируем, что список не `null`
+  List<Product> get items {
+    return [..._items]; // Клон тизмесин кайтарат
+  }
 }
