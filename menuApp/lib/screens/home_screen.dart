@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../models/cart_item.dart';
 import '../providers/cart_provider.dart';
 import '../providers/products_provider.dart';
-import '../models/product.dart';
 import 'cart_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,8 +10,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productsProvider = Provider.of<ProductsProvider>(context);
-    final products = productsProvider.items; // Продуктыларды алуу
+    final cartProvider = Provider.of<CartProvider>(context);
+    final products = cartProvider.availableProducts; // ✅ Продуктыларды алуу
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProductCard(BuildContext context, Product product) {
+  Widget _buildProductCard(BuildContext context, CartItem product) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
     return Container(
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.network(
-            product.imageUrl,
+            product.image,
             height: 80,
           ),
           SizedBox(height: 10),
@@ -120,7 +120,8 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
-              cartProvider.addToCart(product);
+              cartProvider.addToCart(product as String); // ✅ Туура чакыруу
+
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('${product.name} добавлен в корзину!')),
               );

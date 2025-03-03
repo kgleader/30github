@@ -1,35 +1,60 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
+import '../models/cart_item.dart';
 
 class CartProvider with ChangeNotifier {
-  final Map<String, Product> _products = {};
+  final Map<String, CartItem> _items = {};
 
-  Map<String, Product> get products => _products;
+  Map<String, CartItem> get items => _items;
 
-  int get productCount => _products.length; // ✅ Возвращает количество товаров
+  int get itemCount => _items.length; // ✅ Корзинадагы товарлардын саны
 
-  void addToCart(Product product) {
-    if (product.id.isEmpty) {
-      print("❌ Ошибка: product.id пуст");
-      return;
+  double get totalPrice {
+    return _items.values
+        .fold(0, (sum, item) => sum + (item.price * item.quantity));
+  }
+
+  void addToCart(String productId, String name, double price, String image) {
+    if (_items.containsKey(productId)) {
+      _items.update(
+        productId,
+        (existingItem) => CartItem(
+          id: existingItem.id,
+          category: "Default",
+          name: existingItem.name,
+          title: existingItem.title,
+          quantity:
+              existingItem.quantity + 1, // ✅ Бири кошулганда санын көбөйтүү
+          price: existingItem.price,
+          description: existingItem.description,
+          image: existingItem.image, imageUrl: '',
+        ),
+      );
+    } else {
+      _items.putIfAbsent(
+        productId,
+        () => CartItem(
+          id: productId,
+          category: "Default",
+          name: name,
+          title: name,
+          quantity: 1,
+          price: price,
+          description: "",
+          image: image,
+          imageUrl: '',
+        ),
+      );
     }
-
-    _products.putIfAbsent(product.id, () {
-      print("✅ Продукт добавлен: ${product.name}");
-      return product;
-    });
-
-    print("📦 Корзина: ${_products.length} товаров");
     notifyListeners();
   }
 
   void removeItem(String productId) {
-    _products.remove(productId);
+    _items.remove(productId);
     notifyListeners();
   }
 
   void clearCart() {
-    _products.clear();
+    _items.clear();
     notifyListeners();
   }
 }

@@ -7,46 +7,37 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context);
-    final cartItems =
-        cart.products.values.toList(); // ✅ Получаем список товаров
+    final cartProvider = Provider.of<CartProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Корзина')),
-      body: cartItems.isEmpty
-          ? const Center(child: Text('Корзина пуста')) // ✅ Если пусто
+      appBar: AppBar(title: Text("Cart")),
+      body: cartProvider.items.isEmpty
+          ? Center(child: Text("Корзина бош"))
           : ListView.builder(
-              itemCount: cartItems.length,
+              itemCount: cartProvider.items.length,
               itemBuilder: (ctx, i) {
-                final item = cartItems[i];
+                var product = cartProvider.items.values.toList()[i];
                 return ListTile(
-                  leading:
-                      Image.asset(item.imageUrl, width: 50), // ✅ Фото товара
-                  title: Text(item.name),
-                  subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
+                  leading: Image.network(product.image, width: 50, height: 50),
+                  title: Text(product.name),
+                  subtitle: Text(
+                      "\$${product.price.toStringAsFixed(2)} x ${product.quantity}"),
                   trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
+                    icon: Icon(Icons.remove_shopping_cart),
                     onPressed: () {
-                      cart.removeItem(item.id); // ✅ Удаление товара
+                      cartProvider.removeItem(product.id);
                     },
                   ),
                 );
               },
             ),
-      bottomNavigationBar: cartItems.isNotEmpty
-          ? Padding(
-              padding: const EdgeInsets.all(10),
-              child: ElevatedButton(
-                onPressed: () {
-                  cart.clearCart(); // ✅ Очистка корзины
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Корзина очищена!')),
-                  );
-                },
-                child: const Text('Очистить корзину'),
-              ),
-            )
-          : null,
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(16),
+        child: Text(
+          "Жалпы сумма: \$${cartProvider.totalPrice.toStringAsFixed(2)}",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }

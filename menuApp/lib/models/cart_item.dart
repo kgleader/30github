@@ -7,6 +7,7 @@ class CartItem {
   final double price;
   final String description;
   final String image;
+  final String imageUrl;
 
   // <- Required but missing!
 
@@ -18,6 +19,7 @@ class CartItem {
     required this.quantity,
     required this.price,
     required this.description,
-    required this.image, // <- This is causing the error
+    required this.image,
+    required this.imageUrl,
   });
 }
