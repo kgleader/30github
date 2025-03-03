@@ -9,8 +9,17 @@ class CartProvider with ChangeNotifier {
   int get productCount => _products.length; // ✅ Возвращает количество товаров
 
   void addToCart(Product product) {
-    if (product.id.isEmpty) return; // ✅ Проверка на пустой `id`
-    _products.putIfAbsent(product.id, () => product);
+    if (product.id.isEmpty) {
+      print("❌ Ошибка: product.id пуст");
+      return;
+    }
+
+    _products.putIfAbsent(product.id, () {
+      print("✅ Продукт добавлен: ${product.name}");
+      return product;
+    });
+
+    print("📦 Корзина: ${_products.length} товаров");
     notifyListeners();
   }
 

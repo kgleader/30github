@@ -14,7 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_paypal: ^0.2.1
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.2  
   provider: ^6.1.1
   badges: ^3.0.0
   flutter_svg: ^2.0.17

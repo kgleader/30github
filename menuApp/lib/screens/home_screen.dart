@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/cart_provider.dart';
+import '../providers/products_provider.dart';
+import '../models/product.dart';
+import 'cart_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final productsProvider = Provider.of<ProductsProvider>(context);
+    final products = productsProvider.items; // Продуктыларды алуу
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -19,7 +27,10 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.shopping_cart, color: Colors.black),
             onPressed: () {
-              // Корзинага өтүү
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CartScreen()),
+              );
             },
           ),
         ],
@@ -29,7 +40,19 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 10),
           _buildCategorySection(),
           Expanded(
-            child: _buildProductList(),
+            child: GridView.builder(
+              padding: EdgeInsets.all(16),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.8,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+              ),
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                return _buildProductCard(context, products[index]);
+              },
+            ),
           ),
         ],
       ),
@@ -66,23 +89,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProductList() {
-    return GridView.builder(
-      padding: EdgeInsets.all(16),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.8,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-      ),
-      itemCount: 4,
-      itemBuilder: (context, index) {
-        return _buildProductCard();
-      },
-    );
-  }
+  Widget _buildProductCard(BuildContext context, Product product) {
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
-  Widget _buildProductCard() {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -96,22 +105,25 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.network(
-            'https://via.placeholder.com/100', // Сүрөттү кийин алмаштыр
+            product.imageUrl,
             height: 80,
           ),
           SizedBox(height: 10),
           Text(
-            'Product Name',
+            product.name,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           Text(
-            '\$10.00',
+            '\$${product.price.toStringAsFixed(2)}',
             style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
           ),
           SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
-              // Корзинага кошуу
+              cartProvider.addToCart(product);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('${product.name} добавлен в корзину!')),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.yellow.shade700,
