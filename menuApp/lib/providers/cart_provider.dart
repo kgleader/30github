@@ -41,8 +41,7 @@ class CartProvider with ChangeNotifier {
   }
 
   int get productCount => availableProducts.length;
-
-  void addToCart(CartItem product) {
+  void addToCart(CartItem product, String name, double price, String image) {
     if (_items.containsKey(product.id)) {
       _items.update(
         product.id,
