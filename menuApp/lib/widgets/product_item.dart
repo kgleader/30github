@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../models/cart_item.dart';
 import '../providers/cart_provider.dart';
-import '../models/product.dart';
 
 class ProductItem extends StatelessWidget {
-  final Product product;
+  final CartItem product; // ✅ Product ордуна CartItem колдонулду
 
   const ProductItem({super.key, required this.product});
 
@@ -22,41 +22,40 @@ class ProductItem extends StatelessWidget {
             child: ClipRRect(
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
-              child: Image.asset(
-                product.imageUrl,
+              child: Image.network(
+                product.image, // ✅ Туура аталыш
                 fit: BoxFit.cover,
                 width: double.infinity,
                 errorBuilder: (context, error, stackTrace) {
                   return const Icon(
-                      Icons.image_not_supported); // ✅ Если фото нет
+                      Icons.image_not_supported); // ✅ Ошибканын алдын алуу
                 },
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(4), // ✅ Было 8, уменьшили до 4
+            padding: const EdgeInsets.all(4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(product.name,
-                    style: const TextStyle(fontSize: 14)), // ✅ Было 16
-                SizedBox(height: 2), // ✅ Было 4
+                Text(product.name, style: const TextStyle(fontSize: 14)),
+                SizedBox(height: 2),
                 Text(
                   '\$${product.price.toStringAsFixed(2)}',
-                  style: const TextStyle(
-                      color: Colors.green, fontSize: 12), // ✅ Было 14
+                  style: const TextStyle(color: Colors.green, fontSize: 12),
                 ),
               ],
             ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 10, vertical: 4), // ✅ Было 16
-              textStyle: const TextStyle(fontSize: 12), // ✅ Было 14
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              textStyle: const TextStyle(fontSize: 12),
             ),
             onPressed: () {
-              cart.addToCart(product);
+              cart.addToCart(
+                  product.id, product.name, product.price, product.image);
+
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('${product.name} добавлен в корзину!')),
               );

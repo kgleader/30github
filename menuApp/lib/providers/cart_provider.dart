@@ -13,6 +13,10 @@ class CartProvider with ChangeNotifier {
         .fold(0, (sum, item) => sum + (item.price * item.quantity));
   }
 
+  get availableProducts => null;
+
+  get productCount => null;
+
   void addToCart(String productId, String name, double price, String image) {
     if (_items.containsKey(productId)) {
       _items.update(
