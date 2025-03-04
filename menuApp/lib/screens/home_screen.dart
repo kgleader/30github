@@ -119,8 +119,8 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
-              cartProvider.addToCart(product.id, product.name, product.price,
-                  product.image); // ✅ Туура чакыруу
+              cartProvider.addToCart(product.id as CartItem, product.name,
+                  product.price, product.image); // ✅ Туура чакыруу
 
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('${product.name} добавлен в корзину!')),

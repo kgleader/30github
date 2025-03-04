@@ -12,7 +12,6 @@ class ProductsProvider with ChangeNotifier {
       title: 'Delicious Pizza',
       quantity: 1, // ✅ quantity 1ден башталат
       description: 'Tasty cheese pizza with crispy crust',
-      imageUrl: 'https://via.placeholder.com/100',
     ),
     CartItem(
       id: 'p2',
@@ -23,7 +22,6 @@ class ProductsProvider with ChangeNotifier {
       title: 'Juicy Beef Burger',
       quantity: 1,
       description: 'Classic beef burger with fresh lettuce and tomato',
-      imageUrl: 'https://via.placeholder.com/100',
     ),
     CartItem(
       id: 'p3',
@@ -34,7 +32,6 @@ class ProductsProvider with ChangeNotifier {
       title: 'Hot Coffee',
       quantity: 1,
       description: 'Freshly brewed coffee with rich aroma',
-      imageUrl: 'https://via.placeholder.com/100',
     ),
     CartItem(
       id: 'p4',
@@ -45,7 +42,6 @@ class ProductsProvider with ChangeNotifier {
       title: 'Cold Soda',
       quantity: 1,
       description: 'Refreshing soda with ice',
-      imageUrl: 'https://via.placeholder.com/100',
     ),
   ];
 

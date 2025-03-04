@@ -6,48 +6,59 @@ class CartProvider with ChangeNotifier {
 
   Map<String, CartItem> get items => _items;
 
-  int get itemCount => _items.length; // ✅ Корзинадагы товарлардын саны
+  int get itemCount => _items.length;
 
   double get totalPrice {
     return _items.values
         .fold(0, (sum, item) => sum + (item.price * item.quantity));
   }
 
-  get availableProducts => null;
+  List<CartItem> get availableProducts {
+    return [
+      CartItem(
+        id: 'p1',
+        name: 'Pizza',
+        price: 12.99,
+        image:
+            'https://upload.wikimedia.org/wikipedia/commons/6/65/Food_icon.svg', // ✅ `imageUrl` эмес, `image`
+        category: 'Food',
+        title: 'Delicious Pizza',
+        quantity: 1,
+        description: 'Tasty cheese pizza with crispy crust',
+      ),
+      CartItem(
+        id: 'p2',
+        name: 'Burger',
+        price: 8.99,
+        image:
+            'https://upload.wikimedia.org/wikipedia/commons/6/65/Food_icon.svg',
+        category: 'Food',
+        title: 'Juicy Beef Burger',
+        quantity: 1,
+        description: 'Classic beef burger with fresh lettuce and tomato',
+      ),
+    ];
+  }
 
-  get productCount => null;
+  int get productCount => availableProducts.length;
 
-  void addToCart(String productId, String name, double price, String image) {
-    if (_items.containsKey(productId)) {
+  void addToCart(CartItem product) {
+    if (_items.containsKey(product.id)) {
       _items.update(
-        productId,
+        product.id,
         (existingItem) => CartItem(
           id: existingItem.id,
-          category: "Default",
+          category: existingItem.category,
           name: existingItem.name,
           title: existingItem.title,
-          quantity:
-              existingItem.quantity + 1, // ✅ Бири кошулганда санын көбөйтүү
+          quantity: existingItem.quantity + 1,
           price: existingItem.price,
           description: existingItem.description,
-          image: existingItem.image, imageUrl: '',
+          image: existingItem.image,
         ),
       );
     } else {
-      _items.putIfAbsent(
-        productId,
-        () => CartItem(
-          id: productId,
-          category: "Default",
-          name: name,
-          title: name,
-          quantity: 1,
-          price: price,
-          description: "",
-          image: image,
-          imageUrl: '',
-        ),
-      );
+      _items.putIfAbsent(product.id, () => product);
     }
     notifyListeners();
   }

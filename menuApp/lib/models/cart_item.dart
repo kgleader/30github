@@ -7,19 +7,15 @@ class CartItem {
   final double price;
   final String description;
   final String image;
-  final String imageUrl;
-
-  // <- Required but missing!
 
   CartItem({
     required this.id,
     required this.category,
     required this.name,
     required this.title,
-    required this.quantity,
+    this.quantity = 1,
     required this.price,
     required this.description,
     required this.image,
-    required this.imageUrl,
   });
 }

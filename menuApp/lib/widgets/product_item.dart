@@ -4,7 +4,7 @@ import '../models/cart_item.dart';
 import '../providers/cart_provider.dart';
 
 class ProductItem extends StatelessWidget {
-  final CartItem product; // ✅ Product ордуна CartItem колдонулду
+  final CartItem product;
 
   const ProductItem({super.key, required this.product});
 
@@ -23,12 +23,11 @@ class ProductItem extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.network(
-                product.image, // ✅ Туура аталыш
+                product.image, // ✅ `imageUrl` эмес, `image` колдонулду
                 fit: BoxFit.cover,
                 width: double.infinity,
                 errorBuilder: (context, error, stackTrace) {
-                  return const Icon(
-                      Icons.image_not_supported); // ✅ Ошибканын алдын алуу
+                  return const Icon(Icons.image_not_supported);
                 },
               ),
             ),
@@ -53,8 +52,8 @@ class ProductItem extends StatelessWidget {
               textStyle: const TextStyle(fontSize: 12),
             ),
             onPressed: () {
-              cart.addToCart(
-                  product.id, product.name, product.price, product.image);
+              cart.addToCart(product.id as CartItem, product.name,
+                  product.price, product.image); // ✅ Туура чакыруу
 
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('${product.name} добавлен в корзину!')),
