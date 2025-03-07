@@ -47,6 +47,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
       } else {
         result = "Obese";
       }
+
       setState(() {
         _bmi = bmi;
         _resultText = result;
@@ -57,6 +58,15 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
         _resultText = 'Please enter valid values';
       });
     }
+  }
+
+  void _clearFields() {
+    setState(() {
+      _heightController.clear();
+      _weightController.clear();
+      _bmi = 0.0;
+      _resultText = '';
+    });
   }
 
   @override
@@ -91,16 +101,33 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _calculateBMI,
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 32,
-                    vertical: 12,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: _calculateBMI,
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 12,
+                      ),
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
+                    child: const Text('Calculate'),
                   ),
-                  textStyle: const TextStyle(fontSize: 18),
-                ),
-                child: const Text('Calculate'),
+                  const SizedBox(width: 16),
+                  OutlinedButton(
+                    onPressed: _clearFields,
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 12,
+                      ),
+                      textStyle: const TextStyle(fontSize: 18),
+                    ),
+                    child: const Text('Clear'),
+                  ),
+                ],
               ),
               const SizedBox(height: 32),
               Text(
