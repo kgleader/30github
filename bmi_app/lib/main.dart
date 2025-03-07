@@ -5,6 +5,8 @@ void main() {
 }
 
 class BMICalculatorApp extends StatelessWidget {
+  const BMICalculatorApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,6 +22,8 @@ class BMICalculatorApp extends StatelessWidget {
 }
 
 class BMICalculatorScreen extends StatefulWidget {
+  const BMICalculatorScreen({super.key});
+
   @override
   _BMICalculatorScreenState createState() => _BMICalculatorScreenState();
 }
@@ -125,7 +129,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                       ),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text('Clear'),
+                    child: const Text('Clea'),
                   ),
                 ],
               ),
