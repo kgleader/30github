@@ -20,8 +20,6 @@ class BMICalculatorApp extends StatelessWidget {
 }
 
 class BMICalculatorScreen extends StatefulWidget {
-  const BMICalculatorScreen({super.key});
-
   @override
   _BMICalculatorScreenState createState() => _BMICalculatorScreenState();
 }
