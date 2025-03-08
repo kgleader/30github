@@ -113,7 +113,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                       ),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text('Start Calculating'),
+                    child: const Text('Calculate'),
                   ),
                   const SizedBox(width: 16),
                   OutlinedButton(
@@ -125,7 +125,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                       ),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text('Clea'),
+                    child: const Text('Clear'),
                   ),
                 ],
               ),
