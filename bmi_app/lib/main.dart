@@ -91,7 +91,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 16),
               TextField(
                 controller: _weightController,
                 keyboardType: TextInputType.number,
