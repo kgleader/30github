@@ -137,7 +137,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
               Text(
                 'YOUR BMI: ${_bmi.toStringAsFixed(2)}',
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.w500,
                   color: Colors.teal,
                 ),
