@@ -125,7 +125,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
-                        vertical: 12,
+                        vertical: 16,
                       ),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
@@ -137,7 +137,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
               Text(
                 'YOUR BMI: ${_bmi.toStringAsFixed(2)}',
                 style: const TextStyle(
-                  fontSize: 40,
+                  fontSize: 15,
                   fontWeight: FontWeight.w500,
                   color: Colors.redAccent, // Colors.red[700]
                 ),
