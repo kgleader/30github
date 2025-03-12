@@ -139,7 +139,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
-                  color: Colors.redAccent, // Colors.red[700]
+                  color: Colors.teal,
                 ),
               ),
               const SizedBox(height: 30),
