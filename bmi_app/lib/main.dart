@@ -25,6 +25,7 @@ class BMICalculatorScreen extends StatefulWidget {
   const BMICalculatorScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BMICalculatorScreenState createState() => _BMICalculatorScreenState();
 }
 
