@@ -44,7 +44,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
       final bmi = weight / ((height / 100) * (height / 100));
       String result;
       if (bmi < 18.5) {
-        result = "UnderWeight";
+        result = "Underweight";
       } else if (bmi < 24.9) {
         result = "Normal weight";
       } else if (bmi < 29.9) {
