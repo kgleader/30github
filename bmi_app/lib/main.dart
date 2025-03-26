@@ -46,7 +46,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
       if (bmi < 18.5) {
         result = "Underweight (Недовес)";
       } else if (bmi < 24.9) {
-        result = "Normal weight";
+        result = "Normal weight (Норма)";
       } else if (bmi < 29.9) {
         result = "Overweight";
       } else {
