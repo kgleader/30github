@@ -130,7 +130,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                       ),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text('Clear'),
+                    child: const Text('Тазала'),
                   ),
                 ],
               ),
