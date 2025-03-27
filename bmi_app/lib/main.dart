@@ -118,7 +118,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                       ),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text('Start to calculate'),
+                    child: const Text('Санап башта'),
                   ),
                   const SizedBox(width: 16),
                   OutlinedButton(
