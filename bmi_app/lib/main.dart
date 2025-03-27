@@ -84,7 +84,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
           child: Column(
             children: [
               const Text(
-                'Start to calculate your BMI',
+                'BMI калькуляторду иштет',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 24),
