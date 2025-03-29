@@ -92,7 +92,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                 controller: _heightController,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: 'Height (cm)',
+                  labelText: 'Бой (cm)',
                   border: OutlineInputBorder(),
                 ),
               ),
