@@ -101,7 +101,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                 controller: _weightController,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: 'Weight (kg)',
+                  labelText: 'Салмак (kg)',
                   border: OutlineInputBorder(),
                 ),
               ),
