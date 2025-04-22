@@ -17,7 +17,7 @@ class CartProvider with ChangeNotifier {
     return [
       CartItem(
         id: 'p1',
-        name: 'Pizza',
+        name: 'Boorsok',
         price: 12.99,
         image:
             'https://upload.wikimedia.org/wikipedia/commons/6/65/Food_icon.svg', // ✅ `imageUrl` эмес, `image`
