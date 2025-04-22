@@ -34,7 +34,7 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
         child: Text(
-          "Жалпы сумма: \$${cartProvider.totalPrice.toStringAsFixed(2)}",
+          "Жалпы esep': \$${cartProvider.totalPrice.toStringAsFixed(2)}",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
