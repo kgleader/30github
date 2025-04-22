@@ -15,7 +15,7 @@ class ProductsProvider with ChangeNotifier {
     ),
     CartItem(
       id: 'p2',
-      name: 'Burger',
+      name: 'Shaurma',
       price: 8.99,
       image: 'https://via.placeholder.com/100',
       category: 'Food',
