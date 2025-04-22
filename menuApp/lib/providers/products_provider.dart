@@ -41,7 +41,7 @@ class ProductsProvider with ChangeNotifier {
       category: 'Drinks',
       title: 'Cold Soda',
       quantity: 1,
-      description: 'Refreshing soda with ice',
+      description: 'Refreshing soda with water,
     ),
   ];
 
