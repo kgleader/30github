@@ -6,7 +6,7 @@ class PaymentSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Оплата успешна')),
+      appBar: AppBar(title: const Text('Payment successful')),
       body: const Center(
         child: Text(
           'Спасибо за заказ!',
