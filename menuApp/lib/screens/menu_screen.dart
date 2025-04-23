@@ -14,7 +14,7 @@ class MenuScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Меню'),
+        title: const Text('MENU'),
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
