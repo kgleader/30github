@@ -9,7 +9,7 @@ class PaymentSuccessScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Payment successful')),
       body: const Center(
         child: Text(
-          'Thanks for coming!',
+          'Thanks for coming to us!',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
       ),
