@@ -52,7 +52,7 @@ class MenuItemWidget extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const Text("Закрыть"),
+                      child: const Text("Close"),
                     ),
                   ],
                 ),
