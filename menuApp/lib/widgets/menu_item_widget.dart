@@ -45,7 +45,7 @@ class MenuItemWidget extends StatelessWidget {
                         Provider.of<Cart>(context, listen: false).addItem(item);
                         Navigator.pop(context);
                       },
-                      child: const Text("Добавить в корзину"),
+                      child: const Text("Add"),
                     ),
                     const SizedBox(height: 8),
                     ElevatedButton(
