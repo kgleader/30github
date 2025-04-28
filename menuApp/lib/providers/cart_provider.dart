@@ -32,7 +32,7 @@ class CartProvider with ChangeNotifier {
         price: 8.99,
         image:
             'https://upload.wikimedia.org/wikipedia/commons/6/65/Food_icon.svg',
-        category: 'Food',
+        category: 'FOOD',
         title: 'Juicy Beef Burger',
         quantity: 1,
         description: 'Classic beef burger with fresh lettuce and tomato',
