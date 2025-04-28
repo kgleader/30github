@@ -28,7 +28,7 @@ class CartProvider with ChangeNotifier {
       ),
       CartItem(
         id: 'p2',
-        name: 'Burger',
+        name: 'BURGER',
         price: 8.99,
         image:
             'https://upload.wikimedia.org/wikipedia/commons/6/65/Food_icon.svg',
