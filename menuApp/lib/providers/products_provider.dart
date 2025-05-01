@@ -5,7 +5,7 @@ class ProductsProvider with ChangeNotifier {
   final List<CartItem> _items = [
     CartItem(
       id: 'p1',
-      name: 'Pizza',
+      name: 'PIZZA',
       price: 12.99,
       image: 'https://via.placeholder.com/100', // ✅ imageUrl'ду image кылдык
       category: 'Food',
