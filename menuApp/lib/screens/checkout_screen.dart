@@ -37,7 +37,7 @@ class CheckoutScreen extends StatelessWidget {
                       "description": "Payment for coffee"
                     }
                   ],
-                  note: "Спасибо за покупку!",
+                  note: "Thank you for order!",
                   onSuccess: (Map params) {
                     if (kDebugMode) {
                       print("Оплата успешна: $params");
