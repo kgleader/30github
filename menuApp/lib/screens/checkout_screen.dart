@@ -10,7 +10,7 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Оплата заказа')),
+      appBar: AppBar(title: const Text('Payment order')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
