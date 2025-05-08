@@ -34,7 +34,7 @@ class CheckoutScreen extends StatelessWidget {
                           "tax": "0"
                         }
                       },
-                      "description": "Оплата заказа в кафе"
+                      "description": "Payment for coffee"
                     }
                   ],
                   note: "Спасибо за покупку!",
