@@ -58,7 +58,7 @@ class CheckoutScreen extends StatelessWidget {
               ),
             );
           },
-          child: const Text("Оплатить через PayPal"),
+          child: const Text("Payment by PayPal"),
         ),
       ),
     );
