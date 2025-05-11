@@ -40,7 +40,7 @@ class CheckoutScreen extends StatelessWidget {
                   note: "Thank you for order!",
                   onSuccess: (Map params) {
                     if (kDebugMode) {
-                      print("Оплата успешна: $params");
+                      print("Payment successful: $params");
                     }
                     Navigator.pop(context);
                   },
