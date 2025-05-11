@@ -46,7 +46,7 @@ class CheckoutScreen extends StatelessWidget {
                   },
                   onError: (error) {
                     if (kDebugMode) {
-                      print("Ошибка оплаты: $error");
+                      print("Error while payment: $error");
                     }
                   },
                   onCancel: (params) {
