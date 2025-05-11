@@ -51,7 +51,7 @@ class CheckoutScreen extends StatelessWidget {
                   },
                   onCancel: (params) {
                     if (kDebugMode) {
-                      print("Оплата отменена: $params");
+                      print("Payment denied: $params");
                     }
                   },
                 ),
