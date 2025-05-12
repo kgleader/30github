@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           _categoryIcon(Icons.restaurant, 'Баары'),
           _categoryIcon(Icons.local_pizza, 'Пицца'),
-          _categoryIcon(Icons.fastfood, 'Burgers'),
+          _categoryIcon(Icons.fastfood, 'Бургеры'),
           _categoryIcon(Icons.local_cafe, 'Drinks'),
         ],
       ),
