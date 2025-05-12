@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _categoryIcon(Icons.restaurant, 'Баары'),
-          _categoryIcon(Icons.local_pizza, 'Pizza'),
+          _categoryIcon(Icons.local_pizza, 'Пицца'),
           _categoryIcon(Icons.fastfood, 'Burgers'),
           _categoryIcon(Icons.local_cafe, 'Drinks'),
         ],
