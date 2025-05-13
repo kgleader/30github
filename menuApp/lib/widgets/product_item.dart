@@ -59,7 +59,7 @@ class ProductItem extends StatelessWidget {
                 SnackBar(content: Text('${product.name} добавлен в корзину!')),
               );
             },
-            child: const Text('Добавить'),
+            child: const Text('Add'),
           ),
         ],
       ),
