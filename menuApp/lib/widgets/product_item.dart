@@ -56,7 +56,7 @@ class ProductItem extends StatelessWidget {
                   product.price, product.image); // ✅ Туура чакыруу
 
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('${product.name} добавлен в корзину!')),
+                SnackBar(content: Text('${product.name} Added!')),
               );
             },
             child: const Text('Add item'),
