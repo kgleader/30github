@@ -51,7 +51,7 @@ class ProductsProvider with ChangeNotifier {
 
   void addProduct(CartItem product) {
     _items.add(product);
-    notifyListeners(); // ✅ UI жаңыртуу
+    notifyListeners(); // ✅ UI жаңырту
   }
 
   void removeProduct(String id) {
