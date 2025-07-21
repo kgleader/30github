@@ -38,7 +38,7 @@ class ProductsProvider with ChangeNotifier {
       name: 'Soda',
       price: 2.99,
       image: 'https://via.placeholder.com/100',
-      category: 'Drinks',
+      category: 'Drinks & beverages',
       title: 'COLD SODA',
       quantity: 1,
       description: 'Refreshing soda with water,
