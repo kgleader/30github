@@ -46,7 +46,7 @@ class ProductsProvider with ChangeNotifier {
   ];
 
   List<CartItem> get items {
-    return [..._items]; // ✅ Кло тизмесин кайта
+    return [..._items]; // ✅ Клоn тизмесин кайтаr
   }
 
   void addProduct(CartItem product) {
