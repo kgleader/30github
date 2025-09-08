@@ -12,7 +12,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("CART")),
       body: cartProvider.items.isEmpty
-          ? Center(child: Text("Cart is empty"))
+          ? Center(child: Text("CA"))
           : ListView.builder(
               itemCount: cartProvider.items.length,
               itemBuilder: (ctx, i) {
