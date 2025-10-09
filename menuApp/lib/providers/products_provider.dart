@@ -7,7 +7,7 @@ class ProductsProvider with ChangeNotifier {
       id: 'p1',
       name: 'DEEP DISH PIZZA',
       price: 12.99,
-      image: 'https://via.placeholder.com/100', // ✅ imageUrl'ду image кылдык
+      image: 'https://via.placeholder.com/100', // ✅ imageUrl'ду image кылдык//
       category: 'Food',
       title: 'Delicious Pizza',
       quantity: 1, // ✅ quantity 1ден баштала
