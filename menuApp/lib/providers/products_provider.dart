@@ -10,7 +10,7 @@ class ProductsProvider with ChangeNotifier {
       image: 'https://via.placeholder.com/100', // ✅ imageUrl'ду image кылдык
       category: 'Food',
       title: 'Delicious Pizza',
-      quantity: 1, // ✅ quantity 1ден башталат
+      quantity: 1, // ✅ quantity 1ден баштала
       description: 'Tasty cheese pizza with crispy crust',
     ),
     CartItem(
