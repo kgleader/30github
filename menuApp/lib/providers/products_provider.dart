@@ -25,7 +25,7 @@ class ProductsProvider with ChangeNotifier {
     ),
     CartItem(
       id: 'p3',
-      name: 'Chalap Shoro',
+      name: 'Chalap Shoro Tan',
       price: 4.99,
       image: 'https://via.placeholder.com/100',
       category: 'Drinks',
