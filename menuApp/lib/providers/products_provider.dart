@@ -35,7 +35,7 @@ class ProductsProvider with ChangeNotifier {
     ),
     CartItem(
       id: 'p4',
-      name: 'Soda',
+      name: 'Soda Gaz voda',
       price: 2.99,
       image: 'https://via.placeholder.com/100',
       category: 'Drinks & beverages',
