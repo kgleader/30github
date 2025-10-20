@@ -23,7 +23,7 @@ class ProductOverviewScreen extends StatelessWidget {
                       style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
                     showBadge: cart.productCount >
-                        0, // ✅ Скрываем бейдж, если корзина пустая
+                        0, // ✅ Скрываем бейдж, если корзина пустаяx
                     child: IconButton(
                       icon: const Icon(Icons.shopping_cart),
                       onPressed: () {
