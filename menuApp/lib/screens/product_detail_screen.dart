@@ -17,7 +17,7 @@ class ProductOverviewScreen extends StatelessWidget {
           Consumer<CartProvider>(
               builder: (_, cart, ch) => badges.Badge(
                     position: badges.BadgePosition.topEnd(
-                        top: 0, end: 3), // ✅ Размещаем бейдж
+                        top: 0, end: 3), // ✅ Размещаем бейджb
                     badgeContent: Text(
                       cart.productCount.toString(),
                       style: const TextStyle(color: Colors.white, fontSize: 12),
