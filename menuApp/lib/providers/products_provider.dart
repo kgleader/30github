@@ -19,7 +19,7 @@ class ProductsProvider with ChangeNotifier {
       price: 8.99,
       image: 'https://via.placeholder.com/100',
       category: 'Food',
-      title: 'Juicy Beef Burger number 1',
+      title: 'Juicy Beef Burger number 1.',
       quantity: 1,
       description: 'Classic beef burger with fresh lettuce and tomato',
     ),
